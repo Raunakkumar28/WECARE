@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import axios from './axios';git
-import WeCare from './WeCare.jpeg';
 import WeCareAdmin from './WeCareAdmin';
+import './App.css';
+import axios from 'axios';
+import WeCare from './WeCare.jpeg';
+
 
 class App extends Component {
   constructor(props) {
@@ -11,14 +11,14 @@ class App extends Component {
     //this.state = { apiResponse: "" };
     this.state = { text: "" };
   }
-  callAPI() {
-    fetch("http://localhost:9000/testAPI")
-        .then(res => res.text())
-        .then(res => this.setState({ apiResponse: res }));
-}
+//   callAPI() {
+//     fetch("http://localhost:9000/testAPI")
+//         .then(res => res.text())
+//         .then(res => this.setState({ apiResponse: res }));
+// }
 
 componentWillMount() {
-    this.callAPI();
+    // this.callAPI();
 }
   addMsg = (text) => {
     console.log(this.state)
@@ -29,9 +29,10 @@ componentWillMount() {
       }
       
       const body = JSON.stringify(newUser);
-      const res = await axios.post('/testApi', body, config);
+      const res = axios.post('http://localhost:9000/testAPI', body, config);
+      console.log(res.data)
     } catch (err) {
-      console.log(err)
+      console.log(err.response.data)
     }
   }
   

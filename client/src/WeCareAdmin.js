@@ -20,7 +20,7 @@ export default class WeCareAdmin extends Component {
     }
     textAreaPart = () => {
         console.log("oh man",this.state.textData)
-        if (this.state.textData == "Text") {
+        if (this.state.textData === "Text") {
             console.log("hel yeah");
             return <div>
                 <form onSubmit={this.handleSubmit()}>
